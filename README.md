@@ -1,10 +1,25 @@
-# helloworld
+# CrazyThursday
 
-AstrBot 插件模板
+> 一个基于 [AstrBot](https://github.com/astrxbot/astr-bot) 的插件。当用户消息中包含「疯狂星期四」关键字时，自动访问接口并返回相关文案。
 
-A template plugin for AstrBot plugin feature
+## 功能简介
 
-# 支持
+- **关键词触发**：捕捉群聊或私聊中的「疯狂星期四」，自动调用远程接口。
+- **自动获取文案**：无需人工维护文案数据，接口响应的内容将原样发送给用户。
+- **跨平台适配**：通过 AstrBot 的统一接口，兼容多个聊天平台（如 QQ、微信等）。
 
-[帮助文档](https://astrbot.soulter.top/center/docs/%E5%BC%80%E5%8F%91/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/
-)
+## 使用方法
+
+1. **放置插件代码**  
+   - 将本插件的 `main.py` 文件放到 `plugins/crazythursday/` 目录下，并确保 AstrBot 能扫描到该路径。
+
+2. **启动 AstrBot**  
+   - 在运行 AstrBot 的环境下正常启动，插件将被自动加载。
+
+3. **聊天中触发**  
+   - 在任意聊天窗口发送带有「疯狂星期四」的文本，即可看到机器人返回相应的文案。
+
+## 数据来源
+
+本插件的文案/数据来源于以下开源项目：  
+- [zkl2333/vme](https://github.com/zkl2333/vme)
