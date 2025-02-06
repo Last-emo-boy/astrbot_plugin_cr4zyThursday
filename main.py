@@ -34,7 +34,7 @@ class CrazyThursdayPlugin(Star):
 
         if "疯狂星期四" in text:
             try:
-                with urllib.request.urlopen("https://kfc-crazy-thursday.vercel.app/api/index") as resp:
+                with urllib.request.urlopen("https://vme.im/api?format=text") as resp:
                     result_bytes = resp.read()
                     result_text = result_bytes.decode("utf-8", errors="replace")
             except Exception as e:
