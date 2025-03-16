@@ -1,0 +1,9 @@
+{
+    "keywords": {
+      "description": "想要捕捉的关键词列表",
+      "type": "list",
+      "hint": "这里可以添加若干自定义关键词，如 '疯狂星期四', 'CrazyThursdayVme50' 等",
+      "default": ["疯狂星期四"]
+    }
+  }
+  
