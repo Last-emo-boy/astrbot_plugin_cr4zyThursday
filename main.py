@@ -49,7 +49,8 @@ class CrazyThursdayPlugin(Star):
         # 判断消息中是否包含任意关键词
         if any(kw in text for kw in self.keywords):
             try:
-                with urllib.request.urlopen("https://vme.im/api?format=text") as resp:
+                # with urllib.request.urlopen("https://vme.im/api?format=text") as resp:  
+                with urllib.request.urlopen("https://vme.im/api/random?format=text") as resp:
                     result_bytes = resp.read()
                     result_text = result_bytes.decode("utf-8", errors="replace")
             except Exception as e:
