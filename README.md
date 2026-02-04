@@ -1,25 +1,81 @@
-# CrazyThursday
+<div align="center">
 
-> 一个基于 [AstrBot](https://github.com/astrxbot/astr-bot) 的插件。当用户消息中包含「疯狂星期四」关键字时，自动访问接口并返回相关文案。
+# 🍗 疯狂星期四插件
 
-## 功能简介
+<i>🌟 肯德基疯狂星期四，V 我 50！</i>
 
-- **关键词触发**：捕捉群聊或私聊中的「疯狂星期四」，自动调用远程接口。
-- **自动获取文案**：无需人工维护文案数据，接口响应的内容将原样发送给用户。
-- **跨平台适配**：通过 AstrBot 的统一接口，兼容多个聊天平台（如 QQ、微信等）。
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Python](https://img.shields.io/badge/python-3.10+-blue?style=flat-square&logo=python&logoColor=white)
+![AstrBot](https://img.shields.io/badge/framework-AstrBot-ff6b6b?style=flat-square)
 
-## 使用方法
+</div>
 
-1. **放置插件代码**  
-   - 将本插件的 `main.py` 文件放到 `plugins/crazythursday/` 目录下，并确保 AstrBot 能扫描到该路径。
+---
 
-2. **启动 AstrBot**  
-   - 在运行 AstrBot 的环境下正常启动，插件将被自动加载。
+## 📖 简介
 
-3. **聊天中触发**  
-   - 在任意聊天窗口发送带有「疯狂星期四」的文本，即可看到机器人返回相应的文案。
+一款为 [**AstrBot**](https://github.com/AstrBotDevs/AstrBot) 设计的疯狂星期四文案插件。当检测到“疯狂星期四”等关键词时，自动从远程 API 获取并回复随机的疯狂星期四文案。
 
-## 数据来源
+---
 
-本插件的文案/数据来源于以下开源项目：  
-- [zkl2333/vme](https://github.com/zkl2333/vme)
+## ✨ 功能特性
+
+- 🔍 **智能检测** - 自动识别消息中的关键词（支持自定义关键词列表）
+- 🌐 **在线获取** - 自动调用 [vme.im](https://vme.im) API 获取最新最全的文案
+- 📅 **时间限制** - 支持开启“仅限周四触发”模式，更有仪式感
+- ⏱️ **冷却控制** - 支持设置触发冷却时间，避免刷屏
+- 🎯 **完全匹配** - 可设置完全匹配关键词时跳过所有限制（周四/冷却）
+- 🔒 **白名单模式** - 支持仅在指定群聊启用
+
+---
+
+## 📖 使用方法
+
+在群聊中发送包含“疯狂星期四”的消息，机器人将自动回复一段随机文案。
+
+### 💡 示例
+
+> **用户：** 今天是疯狂星期四吗？
+> 
+> **机器人：** 同学你好，我第三次在图书馆看到你，请问可以加你微信嘛？如果有打扰到你，先对你说声抱歉，祝你学业有成。我的微信号是：KFCVME50
+
+---
+
+## ⚙️ 配置项说明
+
+| 配置项 | 说明 | 默认值 |
+| :--- | :--- | :--- |
+| `group_whitelist` | 群聊白名单 | `[]` |
+| `keywords` | 捕捉的关键词列表 | `["疯狂星期四"]` |
+| `only_thursday` | 是否仅在星期四触发 | `false` |
+| `cooldown` | 触发冷却时间（秒） | `0` |
+| `exact_match_ignore` | 完全匹配时是否无视限制 | `false` |
+
+---
+
+## 👥 作者
+
+- [w33d](https://github.com/Last-emo-boy)
+- [Foolllll](https://github.com/Foolllll-J)
+
+---
+
+## 🔗 数据来源
+
+本插件的文案数据来源于：
+- [vme.im](https://vme.im) ([zkl2333/vme](https://github.com/zkl2333/vme))
+
+---
+
+## ❤️ 支持
+
+* [AstrBot 帮助文档](https://astrbot.app)
+* 如果您在使用中遇到问题，欢迎在本仓库提交 [Issue](https://github.com/Last-emo-boy/astrbot_plugin_cr4zyThursday/issues)。
+
+---
+
+<div align="center">
+
+**觉得好用的话，给个 ⭐ Star 吧！**
+
+</div>

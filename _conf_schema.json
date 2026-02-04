@@ -10,5 +10,23 @@
       "type": "list",
       "hint": "这里可以添加若干自定义关键词，如 '疯狂星期四', 'CrazyThursdayVme50' 等",
       "default": ["疯狂星期四"]
+    },
+    "only_thursday": {
+      "description": "仅星期四触发",
+      "hint": "是否仅在日期为星期四时才出现回复",
+      "type": "bool",
+      "default": false
+    },
+    "cooldown": {
+      "description": "回复冷却时间 (秒)",
+      "hint": "检测回复的冷却时间，0 为无冷却",
+      "type": "int",
+      "default": 0
+    },
+    "exact_match_ignore": {
+      "description": "完全匹配无视限制",
+      "hint": "完全匹配关键词时无视任何限制（如星期四和冷却）",
+      "type": "bool",
+      "default": false
     }
   }
