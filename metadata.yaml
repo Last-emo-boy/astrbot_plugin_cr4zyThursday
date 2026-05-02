@@ -1,6 +1,6 @@
 name: cr4zythursday # 这是你的插件的唯一识别名。
 display_name: 疯狂星期四插件 # 插件显示名
 desc: 检测疯狂星期四关键词自动回复文案。 # 插件简短描述
-version: v1.2.0 # 插件版本号。格式：v1.1.1 或者 v1.1
+version: v1.3 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: w33d&Foolllll # 作者
 repo: https://github.com/Last-emo-boy/astrbot_plugin_cr4zyThursday # 插件的仓库地址

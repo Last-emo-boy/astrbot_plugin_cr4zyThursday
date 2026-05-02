@@ -5,10 +5,16 @@
       "type": "list",
       "default": []
     },
+    "apis": {
+      "description": "疯狂星期四 API 列表",
+      "type": "list",
+      "hint": "按顺序调用，当前一个 API 异常或失败时自动尝试下一个",
+      "default": ["https://vme.im/api/random?format=text"]
+    },
     "keywords": {
       "description": "想要捕捉的关键词列表",
       "type": "list",
-      "hint": "这里可以添加若干自定义关键词，如 '疯狂星期四', 'CrazyThursdayVme50' 等",
+      "hint": "这里可以添加若干自定义关键词，如 '疯狂星期四', 'kfc' 等",
       "default": ["疯狂星期四"]
     },
     "only_thursday": {
@@ -25,7 +31,7 @@
     },
     "exact_match_ignore": {
       "description": "完全匹配无视限制",
-      "hint": "完全匹配关键词时无视任何限制（如星期四和冷却）",
+      "hint": "完全匹配关键词时无视任何限制",
       "type": "bool",
       "default": false
     }

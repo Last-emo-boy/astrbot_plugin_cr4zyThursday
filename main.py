@@ -25,13 +25,33 @@ class CrazyThursdayPlugin(Star):
 
         # 从 config 中获取配置，如果没有用户配置，则使用默认值
         self.group_whitelist = self.config.get("group_whitelist", [])
-        self.group_whitelist = [int(gid) for gid in self.group_whitelist]
+        self.group_whitelist = [
+            int(str(gid).split("#", 1)[0].strip())
+            for gid in self.group_whitelist
+            if str(gid).split("#", 1)[0].strip()
+        ]
+        self.apis = self.config.get("apis", ["https://vme.im/api/random?format=text"])
         self.keywords = self.config.get("keywords", ["疯狂星期四"])
         self.only_thursday = self.config.get("only_thursday", False)
         self.exact_match_ignore = self.config.get("exact_match_ignore", False)
         self.cooldown = self.config.get("cooldown", 0)
         self.last_trigger_time: Dict[str, float] = {}
         logger.debug(f"已加载关键词列表: {self.keywords}")
+
+    def _fetch_crazy_thursday_text(self) -> tuple[str, bool]:
+        last_error = "未配置可用的 API"
+        for api in self.apis:
+            if not api:
+                continue
+            try:
+                with urllib.request.urlopen(api) as resp:
+                    result_bytes = resp.read()
+                    return result_bytes.decode("utf-8", errors="replace"), True
+            except Exception as e:
+                last_error = str(e)
+                logger.warning(f"疯狂星期四 API 请求失败: {api} - {e}")
+
+        return f"获取信息失败: {last_error}", False
 
     @event_message_type(EventMessageType.ALL)
     async def on_message(self, event: AstrMessageEvent) -> MessageEventResult:
@@ -41,7 +61,7 @@ class CrazyThursdayPlugin(Star):
         # 群组白名单检查
         group_id_str = event.get_group_id()
         if group_id_str:  # 如果是群聊
-            group_id = int(group_id_str)
+            group_id = int(str(group_id_str).split("#", 1)[0].strip())
             if self.group_whitelist and group_id not in self.group_whitelist:
                 return
         # 如果是私聊，则不检查白名单
@@ -68,15 +88,10 @@ class CrazyThursdayPlugin(Star):
                         logger.debug(f"疯狂星期四触发被冷却限制，剩余冷却时间：{self.cooldown - elapsed:.1f}秒")
                         return
 
-            try:
-                # with urllib.request.urlopen("https://vme.im/api?format=text") as resp:  
-                with urllib.request.urlopen("https://vme.im/api/random?format=text") as resp:
-                    result_bytes = resp.read()
-                    result_text = result_bytes.decode("utf-8", errors="replace")
-                
-                # 更新最后触发时间
+            result_text, fetch_success = self._fetch_crazy_thursday_text()
+
+            # 更新最后触发时间
+            if fetch_success:
                 self.last_trigger_time[msg_obj.session_id] = time.time()
-            except Exception as e:
-                result_text = f"获取信息失败: {e}"
 
             yield event.plain_result(result_text)
